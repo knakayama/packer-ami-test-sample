@@ -1,0 +1,1 @@
+ansible_ssh_private_key_file=../../{{user }}/playbook/ec2_{{user }}.pem

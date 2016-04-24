@@ -1,0 +1,5 @@
+export AWS_ACCESS_KEY=""
+export AWS_SECRET_KEY=""
+export AP_NORTHEAST_1_AMI="ami-f80e0596"
+export AWS_VPC_ID=""
+export AWS_SUBNET_ID=""

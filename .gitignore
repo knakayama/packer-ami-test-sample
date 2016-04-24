@@ -1,0 +1,8 @@
+*.bundle
+*vendor
+.envrc
+*.tfstate
+*.backup
+*site_key
+*.pub
+*.log

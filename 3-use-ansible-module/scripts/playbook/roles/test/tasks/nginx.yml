@@ -1,0 +1,30 @@
+---
+- name: Check - nginx is installed
+  shell: |
+    rpm -q nginx
+  register: result
+- name: Verify - nginx is installed
+  assert:
+    that:
+      - result | success
+      - result.stdout.find('nginx') != -1
+
+- name: Check - nginx is enabled
+  shell: |
+    chkconfig --list nginx
+  register: result
+- name: Verify - nginx is enabled
+  assert:
+    that:
+      - result | success
+      - result.stdout | search('2:on\s+3:on\s+4:on\s+5:on')
+
+- name: Check - nginx is running
+  shell: |
+    ps auxww
+  register: result
+- name: Verify - nginx is running
+  assert:
+    that:
+      - result | success
+      - result.stdout.find('master process /usr/sbin/nginx -c /etc/nginx/nginx.conf') != -1

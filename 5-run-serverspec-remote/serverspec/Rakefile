@@ -1,0 +1,17 @@
+require 'rake'
+require 'rspec/core/rake_task'
+
+task :spec => 'spec:all'
+task :default => :spec
+
+namespace :spec do
+  host = ENV['host']
+  task :all => 'spec:' + host
+  desc "Run serverspec to #{host}"
+  puts "Run serverspec for #{host}"
+  RSpec::Core::RakeTask.new(host) do |t|
+    ENV['TARGET_HOST'] = host
+    ENV['TARGET_PRIVATE_KEY'] = ENV['priv_key']
+    t.pattern = "spec/{web}/*_spec.rb"
+  end
+end
